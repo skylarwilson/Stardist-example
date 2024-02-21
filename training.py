@@ -41,8 +41,8 @@ np.random.seed(42)
 
 lbl_cmap = random_label_cmap()
 
-X_filenames = sorted(glob("/scratch/awil743/modeltesting/images/*.tif"))
-Y = sorted(glob("/scratch/awil743/modeltesting/masks/*.tif"))
+X_filenames = sorted(glob("/content/Stardist-example/images*.tif"))
+Y = sorted(glob("/content/Stardist-example/masks*.tif"))
 assert all(Path(x).name==Path(y).name for x,y in zip(X_filenames,Y))
 
 X = list(map(imread, X_filenames))
