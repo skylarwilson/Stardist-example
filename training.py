@@ -41,8 +41,8 @@ np.random.seed(42)
 
 lbl_cmap = random_label_cmap()
 
-X_filenames = sorted(glob("/content/Stardist-example/images*.tif"))
-Y = sorted(glob("/content/Stardist-example/masks*.tif"))
+X_filenames = sorted(glob("/scratch/awil743/modeltesting/images/*.tif"))
+Y = sorted(glob("/scratch/awil743/modeltesting/masks/*.tif"))
 assert all(Path(x).name==Path(y).name for x,y in zip(X_filenames,Y))
 
 X = list(map(imread, X_filenames))
@@ -124,7 +124,7 @@ rng = np.random.default_rng(42)
 # size of dataset
 # sizes are 30, 60, 90, 120, 150, 180
 # change dataset_size number to the one that was assigned to you
-dataset_size = 30
+dataset_size = 3
 
 # change version number to 1 for the first version
 # change version number to 2 for the second version
@@ -174,7 +174,7 @@ print(f"Testing set size: {len(X_test)}")
 
 
 
-base_dir = "/scratch/awil743/modeltesting/models"
+base_dir = ""
 dataset_dir = os.path.join(base_dir, f'datasize_{dataset_size}')
 os.makedirs(dataset_dir, exist_ok=True)
 
@@ -217,7 +217,7 @@ save_images_to_file(X_test, testing_filename, "Testing Images")
 
 
 # number of epochs
-steps = [10, 75, 150, 200, 300]
+steps = [5]
 
 for i in steps:
     # naming the model
