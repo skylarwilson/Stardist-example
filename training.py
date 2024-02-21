@@ -181,7 +181,7 @@ def main(args):
     print(f"validation set size: {len(X_val)}")
 
     # where the model will be saved
-    base_dir = "models"
+    base_dir = "/content/Stardist-example/models"
 
     # make a new directory for the dataset size
     dataset_dir = os.path.join(base_dir, f'datasize_{dataset_size}')

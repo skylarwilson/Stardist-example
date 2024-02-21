@@ -42,7 +42,7 @@ n_channel = 1 if X[0].ndim == 2 else X[0].shape[-1]
 axis_norm = (0,1)
 
 # load the specific model you created from the directory of your models
-model = StarDist2D(None, name="customModel_2_epochs_5", basedir="/content/models/datasize_2/")
+model = StarDist2D(None, name="customModel_2_epochs_5", basedir="/content/Stardist-example/models/datasize_2/")
 
 # function for prediction
 def prediction(model, i, show_dist=True):
