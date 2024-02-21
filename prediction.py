@@ -27,7 +27,7 @@ image_dir = "/content/Stardist-example/predictionimages"
 file_names = sorted(os.listdir(image_dir))
 
 # selects all .tif images
-X = sorted(glob("/content/Stardist-example/prediction/*.tif"))
+X = sorted(glob("/content/Stardist-example/predictionimages/*.tif"))
 
 # read images from X
 X = list(map(imread,X))
@@ -42,7 +42,7 @@ n_channel = 1 if X[0].ndim == 2 else X[0].shape[-1]
 axis_norm = (0,1)
 
 # load the specific model you created from the directory of your models
-model = StarDist2D(None, name="customModel_2_epochs_5", basedir="/content/models/datasize_2/customModel_2_epochs_5")
+model = StarDist2D(None, name="customModel_2_epochs_5", basedir="/content/models/datasize_2/")
 
 # function for prediction
 def prediction(model, i, show_dist=True):
@@ -89,7 +89,7 @@ def prediction(model, i, show_dist=True):
     plt.tight_layout()
     
     # save the figure to your specified directory
-    plt.savefig(f"prediction/prediction_{i}.png", dpi=500)
+    plt.savefig(f"predictions/prediction_{i}.png", dpi=500)
     plt.close()
 
 # starts the process of predicting
