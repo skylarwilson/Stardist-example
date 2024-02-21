@@ -21,7 +21,7 @@ np.random.seed(42)
 lbl_cmap = random_label_cmap()
 
 # directory containing images for prediction
-image_dir = "prediction"
+image_dir = "/content/Stardist-example/"
 
 # sorts files by name
 file_names = sorted(os.listdir(image_dir))
