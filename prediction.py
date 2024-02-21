@@ -57,34 +57,30 @@ def prediction(model, i, show_dist=True):
     # count the number of unique labels (subtract 1 to exclude the background label 0)
     num_objects = len(np.unique(labels)) - 1
 
+    # get the file name for the current image
+    file_name = file_names[i]
+
+    # get the actual count from the file name
+    # for this to work, your files need to be labeled in this way:
+    # ###count.jpg
+    actual_count = int(file_name.split("count")[0])
+
     # initialize a plot of specified size
     plt.figure(figsize=(13, 10))
 
     # checks if the image is grayscale or color for visualization
     img_show = img if img.ndim == 2 else img[..., 0]
 
-    # extract details for drawing polygons
-    coord, points, prob = details["coord"], details["points"], details["prob"]
-    
-    # display the original image
-    plt.subplot(121); plt.imshow(img_show, cmap="gray"); plt.axis("off")
-
-    # saves axis settings for overlay
-    a = plt.axis()
-
-    # overlay polygons representing object boundaries
-    _draw_polygons(coord, points, prob, show_dist=show_dist)
-
-    # reset axis to the saved settings
-    plt.axis(a)
-
-    # adds title
-    plt.title(f"Predicted Objects: {num_objects}", fontsize=16)
-    
     # display the segmented labels over the original image
-    plt.subplot(122); plt.imshow(img_show, cmap="gray"); plt.axis("off")
+    plt.imshow(img_show, cmap="gray")
     plt.imshow(labels, cmap=lbl_cmap, alpha=0.5)
 
+    # add the title from the first image
+    plt.title(f"Predicted Objects: {num_objects}\nActual Objects: {actual_count}", fontsize=16)
+
+    # hide axes
+    plt.axis("off")
+    
     # adjust layout
     plt.tight_layout()
     
@@ -96,3 +92,5 @@ def prediction(model, i, show_dist=True):
 # will predict for each image in X
 for i in range(len(X)):
     prediction(model, i)
+
+print("Prediction Complete.")
