@@ -89,7 +89,7 @@ def prediction(model, i, show_dist=True):
     plt.tight_layout()
     
     # save the figure to your specified directory
-    plt.savefig(f"predictions/prediction_{i}.png", dpi=500)
+    plt.savefig(f"/content/Stardist-example/predictions/prediction_{i}.png", dpi=500)
     plt.close()
 
 # starts the process of predicting
