@@ -18,7 +18,7 @@ import threading
 import time
 
 # X_filenames represents the raw images
-X_filenames = sorted(glob("images/*.tif"))
+X_filenames = sorted(glob("/content/Stardist-example/images/*.tif"))
 
 # function to parse arguments given in command line
 def parse_args():
@@ -38,7 +38,7 @@ def parse_args():
 def main(args):
 
     # Y represents the masks
-    Y = sorted(glob("masks/*.tif"))
+    Y = sorted(glob("/content/Stardist-example/masks/*.tif"))
 
     # assertion check ensures that each image has a matching mask with the same filename
     assert all(Path(x).name==Path(y).name for x,y in zip(X_filenames,Y))
